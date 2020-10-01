@@ -8,7 +8,7 @@ router.get('/login', async (req, res, next) => {
     console.log('Logging In...');
 
     try {
-        let authService = AuthServices(config.spotifyClientID);
+        let authService = new AuthServices(config.spotifyClientID);
         await authService.authorize();
         console.log('Authorize Endpoint Completed');
     } catch (err) {
