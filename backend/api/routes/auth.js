@@ -1,20 +1,8 @@
 const express = require('express');
-const AuthServices = require('../../services/auth');
-const config = require('../../config');
-
+const authServices = require('../../services/authServices');
 const router = express.Router();
 
-router.get('/login', async (req, res, next) => {
-    console.log('Logging In...');
-
-    try {
-        let authService = new AuthServices(config.spotifyClientID);
-        await authService.authorize();
-        console.log('Authorize Endpoint Completed');
-    } catch (err) {
-        console.log(err);
-        return next(err);
-    }
-});
+router.get('/login', (req, res) => authServices.authorize(req, res));
+router.get('/callback', (req, res) => authServices.callback(req, res));
 
 module.exports = router;
