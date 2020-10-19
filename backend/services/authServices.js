@@ -21,13 +21,7 @@ module.exports = {
             .catch((err) => console.log('Authorize Error: ', err));
     },
 
-    callback: async (req, res) => {
-        console.log('callback reached');
-
-        console.log('redirect uri: ', encodedURI);
-
-        console.log('Req.Query: ', req.query);
-
+    getAccessToken: async (req, res) => {
         let body = {
             grant_type: 'authorization_code',
             code: req.query.code,
@@ -36,8 +30,7 @@ module.exports = {
             client_secret: config.spotifyClientSecret,
         };
 
-        console.log(config.spotifyClientSecret);
-        axios({
+        await axios({
             method: 'post',
             url: 'https://accounts.spotify.com/api/token',
             params: body,
@@ -52,7 +45,10 @@ module.exports = {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         })
-            .then((response) => console.log('Token Response: ', response))
+            .then((response) => {
+                console.log('Returning Token: ', response.data.access_token);
+                return response.data.access_token;
+            })
             .catch((err) => console.log('Token Error: ', err));
     },
 };
