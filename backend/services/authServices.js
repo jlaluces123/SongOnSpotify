@@ -1,5 +1,6 @@
 const axios = require('axios');
 const config = require('../config');
+const btoa = require('btoa');
 
 const uri = 'http://localhost:3377/api/auth/callback';
 const encodedURI = encodeURIComponent(uri);
@@ -7,6 +8,8 @@ const encodedURI = encodeURIComponent(uri);
 module.exports = {
     authorize: async (req, res) => {
         console.log('axios call....');
+
+        console.log('redirect uri: ', encodedURI);
 
         axios
             .get(
@@ -21,30 +24,34 @@ module.exports = {
     callback: async (req, res) => {
         console.log('callback reached');
 
+        console.log('redirect uri: ', encodedURI);
+
         console.log('Req.Query: ', req.query);
 
         let body = {
             grant_type: 'authorization_code',
             code: req.query.code,
-            redirect_uri: encodedURI,
+            redirect_uri: 'http://localhost:3377/api/auth/callback',
             client_id: config.spotifyClientID,
             client_secret: config.spotifyClientSecret,
         };
 
-        axios
-            .post('https://accounts.spotify.com/api/token', {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    Authorization:
-                        'Basic ' +
-                        btoa(
-                            config.spotifyClientID +
-                                ':' +
-                                config.spotifyClientSecret
-                        ),
-                },
-                body,
-            })
+        console.log(config.spotifyClientSecret);
+        axios({
+            method: 'post',
+            url: 'https://accounts.spotify.com/api/token',
+            params: body,
+            headers: {
+                Authorization:
+                    'Basic ' +
+                    btoa(
+                        config.spotifyClientID +
+                            ':' +
+                            config.spotifyClientSecret
+                    ),
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        })
             .then((response) => console.log('Token Response: ', response))
             .catch((err) => console.log('Token Error: ', err));
     },
