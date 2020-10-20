@@ -9,16 +9,12 @@ module.exports = {
 
     authorize: () => {
         return async (req, res, next) => {
-            console.log('axios call....');
-
-            console.log('redirect uri: ', encodedURI);
-
             axios
                 .get(
                     `https://accounts.spotify.com/authorize?client_id=${config.spotifyClientID}&response_type=code&redirect_uri=${encodedURI}`
                 )
                 .then((response) => {
-                    res.status(200).json({ url: response.request.res.responseUrl });
+                    res.status(200).json({ url: response.request.res.responseUrl });                    
                     next();
                 })
                 .catch((err) => console.log('Authorize Error: ', err));

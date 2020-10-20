@@ -1,15 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const authServices = require('../../services/authServices');
 const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/login', authMiddleware.authorize(), (req, res, next) => {
-    res.send('Authorization complete. Initiating code-for-token exchange.')
+    console.log('Authorization complete.')
+    next();
 });
 
-router.get('/callback', authMiddleware.getAccessToken(), (req, res, next) => {
-    res.send(req.accessToken).redirect('https://localhost:3000/welcome');    
+router.get('/callback', authMiddleware.getAccessToken(), (req, res, next) => {      
+    if (req.accessToken) {
+        console.log('token found')
+        res.redirect('https://google.com')
+        res.end();
+    }       
 });
 
 module.exports = router;
