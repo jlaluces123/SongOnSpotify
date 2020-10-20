@@ -2,22 +2,20 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { Route, Switch } from 'react-router-dom';
+import Home from './components/home';
+
 class App extends React.Component {
-    loginSpotify = () => {
-        fetch('http://localhost:3377/api/auth/login')
-            .then((res) => res.json())
-            .then((data) => {
-                window.location.href = data.url;
-            })
-            .catch((err) => console.log(err));
-    };
 
     render() {
         return (
             <div className='App'>
-                <header className='App-header'>
-                    <button onClick={this.loginSpotify}>Login</button>
-                </header>
+
+                <main className="content">
+                    <Switch>
+                        <Route exact path = '/' component = {Home} />
+                    </Switch>
+                </main>
             </div>
         );
     }

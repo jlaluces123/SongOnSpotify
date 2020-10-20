@@ -1,8 +1,19 @@
 const express = require('express');
-const authServices = require('../../services/authServices');
 const router = express.Router();
 
-router.get('/login', (req, res) => authServices.authorize(req, res));
-router.get('/callback', (req, res) => authServices.getAccessToken(req, res));
+const authMiddleware = require('../middleware/authMiddleware');
+
+router.get('/login', authMiddleware.authorize(), (req, res, next) => {
+    console.log('Authorization complete.')
+    next();
+});
+
+router.get('/callback', authMiddleware.getAccessToken(), (req, res, next) => {      
+    if (req.accessToken) {
+        console.log('token found')
+        res.redirect('https://google.com')
+        res.end();
+    }       
+});
 
 module.exports = router;
