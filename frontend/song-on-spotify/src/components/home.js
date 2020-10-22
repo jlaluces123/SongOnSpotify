@@ -30,6 +30,7 @@ const Home = () => {
                 },
             })
             .then((response) => {
+                console.log(response.data);
                 setUserData(response.data);
             })
             .catch((err) => console.log('ERROR GET /v1/me', err));
@@ -38,7 +39,7 @@ const Home = () => {
     if (userData) {
         return (
             <div className='home'>
-                <h1>Welcome back!</h1>
+                <h1>Welcome back {userData.display_name}!</h1>
             </div>
         );
     } else {
