@@ -33,6 +33,8 @@ app.use((req, res, next) => {
 
 app.use('/api/auth', authRouter);
 
+app.get('/', (req, res) => res.send('SANITY Check backend: good'));
+
 app.listen(config.port, (err) => {
     if (err) {
         console.log(err);
