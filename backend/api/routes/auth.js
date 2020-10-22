@@ -15,16 +15,15 @@ router.get('/login', async (req, res, next) => {
     let scopes = 'playlist-read-private playlist-read-collaborative';
 
     try {
-        let authURL =
+        res.redirect(
             'https://accounts.spotify.com/authorize?' +
-            querystring.stringify({
-                response_type: 'code',
-                client_id: config.spotifyClientID,
-                scope: scopes,
-                redirect_uri: uri,
-            });
-
-        return res.status(200).json({ url: authURL });
+                querystring.stringify({
+                    response_type: 'code',
+                    client_id: config.spotifyClientID,
+                    scope: scopes,
+                    redirect_uri: uri,
+                })
+        );
     } catch (err) {
         throw new Error('GET /login ERROR', err);
     }
@@ -63,6 +62,7 @@ router.get('/callback', async (req, res, next) => {
                 res.redirect(
                     'http://localhost:3000' + '?access_token=' + access_token
                 );
+                console.log('GET /callback DONE');
             })
             .catch((err) => console.log('Token Error: ', err));
     } catch (err) {

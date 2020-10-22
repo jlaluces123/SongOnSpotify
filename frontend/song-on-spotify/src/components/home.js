@@ -1,27 +1,67 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import queryString from 'query-string';
+import axios from 'axios';
+
+import Playlists from './playlists';
+import Search from './search';
 
 const Home = () => {
+    const [userData, setUserData] = useState(null);
+
     useEffect(() => {
-        console.log('Component Did Mount');
-    });
+        if (!userData) {
+            getUserData();
+        } else {
+            return;
+        }
+    }, []);
 
-    const loginSpotify = () => {
-        console.log('SANITY check');
-        fetch('http://localhost:3377/api/auth/login')
-            .then((response) => response.json())
-            .then((data) => (window.location.href = data.url))
-            .catch((err) => console.log(err));
+    const getUserData = () => {
+        console.log(window.location.search);
+        let accessToken = queryString.parse(window.location.search); // Grabs access token from URL
 
-        console.log('SANITY check END');
+        if (!accessToken) return;
+
+        console.log(accessToken.access_token);
+
+        // https://api.spotify.com/v1/me
+        axios
+            .get('https://api.spotify.com/v1/me', {
+                headers: {
+                    Authorization: 'Bearer ' + accessToken.access_token,
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                setUserData(response.data);
+            })
+            .catch((err) => console.log('ERROR GET /v1/me', err));
     };
 
-    return (
-        <div className='home'>
-            <h1>Welcome to Song On Spotify</h1>
+    if (userData) {
+        return (
+            <div className='home'>
+                <h1>Welcome back {userData.display_name}!</h1>
+                <Search />
+                <Playlists />
+            </div>
+        );
+    } else {
+        return (
+            <div className='home'>
+                <h1>Welcome to Song On Spotify</h1>
 
-            <button onClick={loginSpotify}>Login</button>
-        </div>
-    );
+                <button
+                    onClick={() =>
+                        (window.location =
+                            'http://localhost:3377/api/auth/login')
+                    }
+                >
+                    Login
+                </button>
+            </div>
+        );
+    }
 };
 
 export default Home;
