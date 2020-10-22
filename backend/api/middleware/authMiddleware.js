@@ -6,7 +6,6 @@ const uri = 'http://localhost:3377/api/auth/callback';
 const encodedURI = encodeURIComponent(uri);
 
 module.exports = {
-
     authorize: () => {
         return async (req, res, next) => {
             axios
@@ -14,16 +13,17 @@ module.exports = {
                     `https://accounts.spotify.com/authorize?client_id=${config.spotifyClientID}&response_type=code&redirect_uri=${encodedURI}`
                 )
                 .then((response) => {
-                    res.status(200).json({ url: response.request.res.responseUrl });                    
+                    res.status(200).json({
+                        url: response.request.res.responseUrl,
+                    });
                     next();
                 })
                 .catch((err) => console.log('Authorize Error: ', err));
-        }
+        };
     },
 
     getAccessToken: () => {
-
-        return async (req, res, next) => {        
+        return async (req, res, next) => {
             let body = {
                 grant_type: 'authorization_code',
                 code: req.query.code,
@@ -47,11 +47,10 @@ module.exports = {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
             })
-                .then((response) => {                     
-                    req.accessToken = response.data.access_token;                                      
-                    next();            
+                .then((response) => {
+                    req.access_token = response.data.access_token;
                 })
                 .catch((err) => console.log('Token Error: ', err));
-        }
+        };
     },
-}
+};
