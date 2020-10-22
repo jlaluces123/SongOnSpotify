@@ -3,9 +3,9 @@ import queryString from 'query-string';
 import axios from 'axios';
 
 import Playlists from './playlists';
+import Search from './search';
 
 const Home = () => {
-    const [loggedIn, setLoggedIn] = useState(false);
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
@@ -42,6 +42,7 @@ const Home = () => {
         return (
             <div className='home'>
                 <h1>Welcome back {userData.display_name}!</h1>
+                <Search />
                 <Playlists />
             </div>
         );
