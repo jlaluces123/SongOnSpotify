@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Home = () => {
-    useEffect(() => {
-        console.log('Component Did Mount');
-    });
+    const [userData, setUserData] = useState(false);
+
+    useEffect(() => {});
 
     const loginSpotify = () => {
         console.log('SANITY check');
@@ -15,13 +15,21 @@ const Home = () => {
         console.log('SANITY check END');
     };
 
-    return (
-        <div className='home'>
-            <h1>Welcome to Song On Spotify</h1>
+    if (userData) {
+        return (
+            <div className='home'>
+                <h1>Welcome back!</h1>
+            </div>
+        );
+    } else {
+        return (
+            <div className='home'>
+                <h1>Welcome to Song On Spotify</h1>
 
-            <button onClick={loginSpotify}>Login</button>
-        </div>
-    );
+                <button onClick={loginSpotify}>Login</button>
+            </div>
+        );
+    }
 };
 
 export default Home;
