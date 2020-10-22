@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
 
+import Playlists from './playlists';
+
 const Home = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [userData, setUserData] = useState(null);
@@ -40,6 +42,7 @@ const Home = () => {
         return (
             <div className='home'>
                 <h1>Welcome back {userData.display_name}!</h1>
+                <Playlists />
             </div>
         );
     } else {
