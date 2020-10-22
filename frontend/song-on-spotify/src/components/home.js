@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import queryString from 'query-string';
 
 const Home = () => {
     const [userData, setUserData] = useState(false);
 
     useEffect(() => {});
+
+    const getUserData = () => {
+        console.log(window.location.search);
+    };
 
     const loginSpotify = () => {
         console.log('SANITY check');
@@ -13,6 +18,7 @@ const Home = () => {
             .catch((err) => console.log(err));
 
         console.log('SANITY check END');
+        getUserData();
     };
 
     if (userData) {
