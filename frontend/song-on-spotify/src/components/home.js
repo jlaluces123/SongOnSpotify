@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import queryString from 'query-string';
 import axios from 'axios';
 
+import { useAccessToken } from '../hooks/useAccessToken';
 import Playlists from './playlists';
 import Search from './search';
 
 const Home = () => {
     const [userData, setUserData] = useState(null);
+    const [accessToken, setAccessToken] = useAccessToken(
+        window.location.search
+    );
 
     useEffect(() => {
         if (!userData) {
@@ -16,19 +19,14 @@ const Home = () => {
         }
     }, []);
 
-    const getUserData = () => {
-        console.log(window.location.search);
-        let accessToken = queryString.parse(window.location.search); // Grabs access token from URL
-
-        if (!accessToken) return;
-
-        console.log(accessToken.access_token);
+    const getUserData = async () => {
+        console.log('Getting user data...');
 
         // https://api.spotify.com/v1/me
         axios
             .get('https://api.spotify.com/v1/me', {
                 headers: {
-                    Authorization: 'Bearer ' + accessToken.access_token,
+                    Authorization: 'Bearer ' + accessToken,
                 },
             })
             .then((response) => {
