@@ -7,16 +7,10 @@ import { useAccessToken } from '../hooks/useAccessToken';
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [chosenSong, setChosenSong] = useState(null);
     const [suggestions, setSuggestions] = useState([]);
     const [accessToken, setAccessToken] = useAccessToken(
         window.location.search
     );
-
-    const addSong = (e) => {
-        e.preventDefault();
-        console.log('Adding song to playlist');
-    };
 
     const suggestSongs = (e) => {
         e.preventDefault();
@@ -56,7 +50,7 @@ const Search = () => {
                               )}
                               name={song.name}
                               images={song.album.images}
-                              addSong={addSong}
+                              uri={song.uri}
                           />
                       );
                   })
