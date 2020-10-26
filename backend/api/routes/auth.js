@@ -12,7 +12,8 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/login', async (req, res, next) => {
     console.log('GET /login');
-    let scopes = 'playlist-read-private playlist-read-collaborative';
+    let scopes =
+        'playlist-modify-public playlist-modify-private playlist-read-private playlist-read-collaborative';
 
     try {
         res.redirect(
