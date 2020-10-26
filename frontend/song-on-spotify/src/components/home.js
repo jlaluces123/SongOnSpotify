@@ -40,8 +40,8 @@ const Home = () => {
         return (
             <div className='home'>
                 <h1>Welcome back {userData.display_name}!</h1>
-                <Search />
                 <Playlists />
+                <Search />
             </div>
         );
     } else {
