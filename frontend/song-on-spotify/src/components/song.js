@@ -15,6 +15,7 @@ const Song = ({ artists, name, images, uri }) => {
         console.log(playlistId, uri, accessToken);
 
         if (accessToken) {
+            // https://stackoverflow.com/questions/60811947/how-to-pass-authorization-token-in-header-to-react-axios-post
             await axios
                 .post(
                     `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
