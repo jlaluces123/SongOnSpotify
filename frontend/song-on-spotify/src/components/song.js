@@ -15,18 +15,14 @@ const Song = ({ artists, name, images, uri }) => {
         console.log(playlistId, uri, accessToken);
 
         if (accessToken) {
-            console.log('Bearer ' + accessToken);
-            axios
+            await axios
                 .post(
-                    `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+                    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
+                    null,
                     {
                         headers: {
                             Authorization: 'Bearer ' + accessToken,
                             'Content-Type': 'application/json',
-                            'Content-Length': 0,
-                        },
-                        params: {
-                            uris: [uri],
                         },
                     }
                 )
