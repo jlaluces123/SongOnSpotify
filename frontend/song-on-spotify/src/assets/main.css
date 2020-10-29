@@ -11763,6 +11763,10 @@ video {
   max-height: 100vh;
 }
 
+.max-h-menu {
+  max-height: 12.5rem;
+}
+
 .max-w-none {
   max-width: none;
 }
@@ -13857,6 +13861,13 @@ video {
   left: auto;
 }
 
+.inset-sm {
+  top: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
 .inset-y-0 {
   top: 0;
   bottom: 0;
@@ -13875,6 +13886,16 @@ video {
 .inset-x-auto {
   right: auto;
   left: auto;
+}
+
+.inset-y-sm {
+  top: 1.5rem;
+  bottom: 1.5rem;
+}
+
+.inset-x-sm {
+  right: 1.5rem;
+  left: 1.5rem;
 }
 
 .top-0 {
@@ -13907,6 +13928,22 @@ video {
 
 .left-auto {
   left: auto;
+}
+
+.top-sm {
+  top: 1.5rem;
+}
+
+.right-sm {
+  right: 1.5rem;
+}
+
+.bottom-sm {
+  bottom: 1.5rem;
+}
+
+.left-sm {
+  left: 1.5rem;
 }
 
 .resize-none {
@@ -30387,6 +30424,10 @@ video {
     max-height: 100vh;
   }
 
+  .sm\:max-h-menu {
+    max-height: 12.5rem;
+  }
+
   .sm\:max-w-none {
     max-width: none;
   }
@@ -32481,6 +32522,13 @@ video {
     left: auto;
   }
 
+  .sm\:inset-sm {
+    top: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
   .sm\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -32499,6 +32547,16 @@ video {
   .sm\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .sm\:inset-y-sm {
+    top: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .sm\:inset-x-sm {
+    right: 1.5rem;
+    left: 1.5rem;
   }
 
   .sm\:top-0 {
@@ -32531,6 +32589,22 @@ video {
 
   .sm\:left-auto {
     left: auto;
+  }
+
+  .sm\:top-sm {
+    top: 1.5rem;
+  }
+
+  .sm\:right-sm {
+    right: 1.5rem;
+  }
+
+  .sm\:bottom-sm {
+    bottom: 1.5rem;
+  }
+
+  .sm\:left-sm {
+    left: 1.5rem;
   }
 
   .sm\:resize-none {
@@ -48981,6 +49055,10 @@ video {
     max-height: 100vh;
   }
 
+  .md\:max-h-menu {
+    max-height: 12.5rem;
+  }
+
   .md\:max-w-none {
     max-width: none;
   }
@@ -51075,6 +51153,13 @@ video {
     left: auto;
   }
 
+  .md\:inset-sm {
+    top: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
   .md\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -51093,6 +51178,16 @@ video {
   .md\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .md\:inset-y-sm {
+    top: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .md\:inset-x-sm {
+    right: 1.5rem;
+    left: 1.5rem;
   }
 
   .md\:top-0 {
@@ -51125,6 +51220,22 @@ video {
 
   .md\:left-auto {
     left: auto;
+  }
+
+  .md\:top-sm {
+    top: 1.5rem;
+  }
+
+  .md\:right-sm {
+    right: 1.5rem;
+  }
+
+  .md\:bottom-sm {
+    bottom: 1.5rem;
+  }
+
+  .md\:left-sm {
+    left: 1.5rem;
   }
 
   .md\:resize-none {
@@ -67575,6 +67686,10 @@ video {
     max-height: 100vh;
   }
 
+  .lg\:max-h-menu {
+    max-height: 12.5rem;
+  }
+
   .lg\:max-w-none {
     max-width: none;
   }
@@ -69669,6 +69784,13 @@ video {
     left: auto;
   }
 
+  .lg\:inset-sm {
+    top: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
   .lg\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -69687,6 +69809,16 @@ video {
   .lg\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .lg\:inset-y-sm {
+    top: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .lg\:inset-x-sm {
+    right: 1.5rem;
+    left: 1.5rem;
   }
 
   .lg\:top-0 {
@@ -69719,6 +69851,22 @@ video {
 
   .lg\:left-auto {
     left: auto;
+  }
+
+  .lg\:top-sm {
+    top: 1.5rem;
+  }
+
+  .lg\:right-sm {
+    right: 1.5rem;
+  }
+
+  .lg\:bottom-sm {
+    bottom: 1.5rem;
+  }
+
+  .lg\:left-sm {
+    left: 1.5rem;
   }
 
   .lg\:resize-none {
@@ -86169,6 +86317,10 @@ video {
     max-height: 100vh;
   }
 
+  .xl\:max-h-menu {
+    max-height: 12.5rem;
+  }
+
   .xl\:max-w-none {
     max-width: none;
   }
@@ -88263,6 +88415,13 @@ video {
     left: auto;
   }
 
+  .xl\:inset-sm {
+    top: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
   .xl\:inset-y-0 {
     top: 0;
     bottom: 0;
@@ -88281,6 +88440,16 @@ video {
   .xl\:inset-x-auto {
     right: auto;
     left: auto;
+  }
+
+  .xl\:inset-y-sm {
+    top: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .xl\:inset-x-sm {
+    right: 1.5rem;
+    left: 1.5rem;
   }
 
   .xl\:top-0 {
@@ -88313,6 +88482,22 @@ video {
 
   .xl\:left-auto {
     left: auto;
+  }
+
+  .xl\:top-sm {
+    top: 1.5rem;
+  }
+
+  .xl\:right-sm {
+    right: 1.5rem;
+  }
+
+  .xl\:bottom-sm {
+    bottom: 1.5rem;
+  }
+
+  .xl\:left-sm {
+    left: 1.5rem;
   }
 
   .xl\:resize-none {

@@ -4,6 +4,7 @@ import queryString from 'query-string';
 import Song from './song';
 
 import { useAccessToken } from '../hooks/useAccessToken';
+import Playlists from './playlists';
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -33,30 +34,38 @@ const Search = () => {
     };
 
     return (
-        <form onSubmit={(e) => suggestSongs(e)}>
+        <form
+            className='flex flex-row border-b-2 border-gray-800'
+            onSubmit={(e) => suggestSongs(e)}
+        >
             <input
                 type='text'
-                name='songName'
+                className='w-1/2 placeholder-gray-600 focus:outline-none '
+                placeholder='Enter a song name'
+                autoComplete='off'
                 id='songName'
+                name='songName'
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
-            {suggestions
-                ? suggestions.map((song) => {
-                      return (
-                          <Song
-                              key={song.id}
-                              artists={song.artists.map(
-                                  (artist) => artist.name
-                              )}
-                              name={song.name}
-                              images={song.album.images}
-                              uri={song.uri}
-                          />
-                      );
-                  })
-                : 'Loading....'}
+            <Playlists />
         </form>
     );
 };
 
 export default Search;
+
+/* {suggestions
+    ? suggestions.map((song) => {
+          return (
+              <Song
+                  key={song.id}
+                  artists={song.artists.map(
+                      (artist) => artist.name
+                  )}
+                  name={song.name}
+                  images={song.album.images}
+                  uri={song.uri}
+              />
+          );
+      })
+    : 'Loading....'} */
