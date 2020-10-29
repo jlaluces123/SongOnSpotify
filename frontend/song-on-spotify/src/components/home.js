@@ -38,7 +38,7 @@ const Home = () => {
 
     if (userData) {
         return (
-            <div className='home'>
+            <div className='bg-white'>
                 <h1>Welcome back {userData.display_name}!</h1>
                 <Playlists />
                 <Search />
