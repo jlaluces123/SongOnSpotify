@@ -67,9 +67,9 @@ const Song = ({ artists, name, images, uri }) => {
 
     return (
         <div className='border-b-2 flex justify-between items-center py-4 transition hover:scale-y-1 hover:shadow-lg duration-250 ease-in transform'>
-            <div className='flex flex-row'>
+            <div className='flex flex-row w-3/4'>
                 <img
-                    className='mr-2 rounded-md'
+                    className='mr-2 rounded-md max-h-img'
                     src={images[1].url}
                     srcSet={`
                          ${images[1].url} ${images[1].width}w,
@@ -90,7 +90,7 @@ const Song = ({ artists, name, images, uri }) => {
             </div>
 
             <svg
-                className='w-6 h-6 border-2 border-blue-400 text-blue-400 mr-2 rounded-xl hover:bg-blue-400 hover:text-white cursor-pointer transition duration-300 ease-in-out'
+                className='w-6 h-6 border-2 border-blue-400 text-blue-400 mr-2 rounded-full hover:bg-blue-400 hover:text-white cursor-pointer transition duration-300 ease-in-out'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
