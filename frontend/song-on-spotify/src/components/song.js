@@ -15,10 +15,10 @@ const Song = ({ artists, name, images, uri }) => {
         console.log(playlistId, uri, accessToken);
 
         if (accessToken) {
-            // https://stackoverflow.com/questions/60811947/how-to-pass-authorization-token-in-header-to-react-axios-post
+            //  https:stackoverflow.com/questions/60811947/how-to-pass-authorization-token-in-header-to-react-axios-post
             await axios
                 .post(
-                    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
+                    `https:api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
                     null,
                     {
                         headers: {
@@ -38,15 +38,41 @@ const Song = ({ artists, name, images, uri }) => {
         }
     };
 
+    // return (
+    //     <div className='song-container'>
+    //         <div className='track-data'>
+    //             {/* Picture and Data goes here */}
+    //             <img
+    //                 src={images[1].url}
+    //                 srcSet={`
+    //                      ${images[1].url} ${images[1].width}w,
+    //                      ${images[2].url} ${images[2].width}w
+    //                  `}
+    //                 sizes={`
+    //                      (max-width: 600px) ${images[2].width}px, ${images[1].width}px
+    //                  `}
+    //                 alt='Track Art'
+    //             />
+
+    //             <div className='track-text'>
+    //                 <h4>{name}</h4>
+    //                 <span>{artists}</span>
+    //             </div>
+    //         </div>
+
+    //         {/* Add button goes here */}
+    //         <button onClick={(e) => addSong(e)}>Add +</button>
+    //     </div>
+    // );
+
     return (
-        <div className='song-container'>
-            <div className='track-data'>
-                {/* Picture and Data goes here */}
+        <div className='border-b-2 flex justify-between items-center py-4'>
+            <div className='flex flex-row'>
                 <img
                     src={images[1].url}
                     srcSet={`
-                        ${images[1].url} ${images[1].width}w,
-                        ${images[2].url} ${images[2].width}w
+                         ${images[1].url} ${images[1].width}w,
+                         ${images[2].url} ${images[2].width}w
                     `}
                     sizes={`
                         (max-width: 600px) ${images[2].width}px, ${images[1].width}px
@@ -60,8 +86,20 @@ const Song = ({ artists, name, images, uri }) => {
                 </div>
             </div>
 
-            {/* Add button goes here */}
-            <button onClick={(e) => addSong(e)}>Add +</button>
+            <svg
+                className='w-6 h-6'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+            >
+                <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M12 6v6m0 0v6m0-6h6m-6 0H6'
+                ></path>
+            </svg>
         </div>
     );
 };

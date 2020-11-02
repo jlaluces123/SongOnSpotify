@@ -370,6 +370,7 @@ module.exports = {
             full: '100%',
             screen: '100vh',
             menu: '12.5rem',
+            md: '28rem',
         },
         maxWidth: (theme, { breakpoints }) => ({
             none: 'none',
