@@ -39,7 +39,13 @@ const Home = () => {
     if (userData) {
         return (
             <div className='bg-white px-6 my-6'>
-                <h1 className='font-bold text-lg'>Search & Press Enter!</h1>
+                <h1 className='font-bold text-2xl capitalize'>
+                    Add a song to your playlist
+                </h1>
+                <span className='text-sm text-gray-600'>
+                    Search a song name and select what playlist <br /> you would
+                    like to add it to!
+                </span>
                 <Search />
             </div>
         );

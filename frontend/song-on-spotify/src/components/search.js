@@ -49,12 +49,12 @@ const Search = () => {
     return (
         <div>
             <form
-                className='flex flex-row border-b-2 border-gray-800'
+                className='flex flex-row mt-4'
                 onSubmit={(e) => suggestSongs(e)}
             >
                 <input
                     type='text'
-                    className='w-1/2 placeholder-gray-600 focus:outline-none '
+                    className='w-1/2 border-b-2 border-gray-300 placeholder-gray-600 text-md text-black focus:outline-none '
                     placeholder='Enter a song name'
                     autoComplete='off'
                     id='songName'
