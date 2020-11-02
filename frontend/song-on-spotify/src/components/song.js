@@ -30,40 +30,13 @@ const Song = ({ artists, name, images, uri }) => {
                 .then((response) => {
                     console.log('ADDING Song Response', response);
                 })
-                .catch((err) =>
-                    console.log('ERROR POST /v1/playlists/:id/tracks', err)
-                );
+                .catch((err) => {
+                    console.log('ERROR POST /v1/playlists/:id/tracks', err);
+                });
         } else {
             console.log('no access token');
         }
     };
-
-    // return (
-    //     <div className='song-container'>
-    //         <div className='track-data'>
-    //             {/* Picture and Data goes here */}
-    //             <img
-    //                 src={images[1].url}
-    //                 srcSet={`
-    //                      ${images[1].url} ${images[1].width}w,
-    //                      ${images[2].url} ${images[2].width}w
-    //                  `}
-    //                 sizes={`
-    //                      (max-width: 600px) ${images[2].width}px, ${images[1].width}px
-    //                  `}
-    //                 alt='Track Art'
-    //             />
-
-    //             <div className='track-text'>
-    //                 <h4>{name}</h4>
-    //                 <span>{artists}</span>
-    //             </div>
-    //         </div>
-
-    //         {/* Add button goes here */}
-    //         <button onClick={(e) => addSong(e)}>Add +</button>
-    //     </div>
-    // );
 
     return (
         <div className='border-b-2 flex justify-between items-center py-4 transition hover:scale-y-1 hover:shadow-lg duration-250 ease-in transform'>
