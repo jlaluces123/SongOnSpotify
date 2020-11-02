@@ -49,7 +49,7 @@ const Search = () => {
     return (
         <div>
             <form
-                className='flex flex-row mt-4'
+                className='flex flex-row mt-5'
                 onSubmit={(e) => suggestSongs(e)}
             >
                 <input
