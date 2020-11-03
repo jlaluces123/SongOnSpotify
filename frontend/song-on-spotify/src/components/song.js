@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAccessToken } from '../hooks/useAccessToken';
 
+import Alert from './alert';
+
 const Song = ({ artists, name, images, uri }) => {
     const [accessToken, setAccessToken] = useAccessToken(
         window.location.search
