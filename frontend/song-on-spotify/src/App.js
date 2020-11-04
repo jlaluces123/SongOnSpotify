@@ -22,13 +22,11 @@ const App = () => {
     }, []);
 
     return (
-        <div className='App'>
-            <header>
-                {/* Navigation */}
-                <Navigation loggedIn={loggedIn} />
-            </header>
+        <div className='App flex flex-col h-screen'>
+            {/* Navigation */}
+            <Navigation loggedIn={loggedIn} />
 
-            <main className='content'>
+            <main className='content flex-grow'>
                 <Switch>
                     <Route exact path='/' component={Home} />
                 </Switch>

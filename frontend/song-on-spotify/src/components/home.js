@@ -93,16 +93,19 @@ const Home = () => {
         );
     } else {
         return (
-            <div className='home'>
-                <h1>Welcome to Song On Spotify</h1>
+            <div className='flex flex-col h-full home items-center justify-center'>
+                <h1 className='font-bold my-2 text-2xl text-green-500'>
+                    Welcome to Song On Spotify
+                </h1>
 
                 <button
+                    className='border-2 border-green-400 hover:shadow-lg bg-green-400 duration-200 ease-in-out hover:bg-green-500 hover:border-green-500 hover:text-white px-16 py-2 rounded shadow text-white transition'
                     onClick={() =>
                         (window.location =
                             'http://localhost:3377/api/auth/login')
                     }
                 >
-                    Login
+                    Sign In
                 </button>
             </div>
         );
