@@ -41,6 +41,7 @@ const Home = () => {
 
     const addSong = async (e, uri) => {
         e.preventDefault();
+        console.log('Add Song Invoked');
 
         let playlistId = localStorage.getItem('playlist_id');
         console.log(playlistId, uri, accessToken);
