@@ -22,8 +22,6 @@ const Home = () => {
     }, []);
 
     const getUserData = async () => {
-        console.log('Getting user data...');
-
         // https://api.spotify.com/v1/me
         axios
             .get('https://api.spotify.com/v1/me', {
@@ -32,7 +30,6 @@ const Home = () => {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 setUserData(response.data);
             })
             .catch((err) => console.log('ERROR GET /v1/me', err));
@@ -40,7 +37,6 @@ const Home = () => {
 
     const addSong = async (e, uri) => {
         e.preventDefault();
-        console.log('Add Song Invoked');
 
         let playlistId = localStorage.getItem('playlist_id');
         console.log(playlistId, uri, accessToken);
@@ -59,7 +55,6 @@ const Home = () => {
                     }
                 )
                 .then((response) => {
-                    console.log('ADDING Song Response', response);
                     setStatus('success');
                     setTimeout(() => setStatus(null), 3000);
                 })

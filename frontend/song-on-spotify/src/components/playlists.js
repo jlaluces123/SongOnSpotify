@@ -40,7 +40,6 @@ const Playlists = () => {
                     className='text-sm rounded-lg block cursor-pointer bg-gray-300 text-gray-800'
                     onClick={(e) => {
                         setIsOpen(!isOpen);
-                        console.log(isOpen);
                     }}
                 >
                     <div className='p-2 flex flex-row items-center justify-between'>

@@ -9,7 +9,6 @@ const App = () => {
 
     const handleLoggedIn = () => {
         if (window.location.search) {
-            console.log('Is Logged In');
             setIsLoggedIn(true);
         } else {
             setIsLoggedIn(false);
@@ -17,13 +16,11 @@ const App = () => {
     };
 
     useEffect(() => {
-        console.log('Checking if user is logged in');
         handleLoggedIn();
     }, []);
 
     return (
         <div className='App flex flex-col h-screen'>
-            {/* Navigation */}
             <Navigation loggedIn={loggedIn} />
 
             <main className='content flex-grow'>
