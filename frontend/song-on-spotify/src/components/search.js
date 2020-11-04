@@ -6,7 +6,7 @@ import Song from './song';
 import { useAccessToken } from '../hooks/useAccessToken';
 import Playlists from './playlists';
 
-const Search = () => {
+const Search = ({ addSong }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [accessToken, setAccessToken] = useAccessToken(
@@ -69,6 +69,7 @@ const Search = () => {
                     ? suggestions.map((song) => {
                           return (
                               <Song
+                                  addSong={addSong}
                                   key={song.id}
                                   artists={parseArtists(song.artists)}
                                   name={song.name}
