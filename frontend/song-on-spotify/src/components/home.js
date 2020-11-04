@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useAccessToken } from '../hooks/useAccessToken';
 import Playlists from './playlists';
 import Search from './search';
-import Alert from './alert';
+import { Expire, Alert } from './alert';
 
 const Home = () => {
     const [userData, setUserData] = useState(null);
@@ -13,7 +13,6 @@ const Home = () => {
     );
 
     const [status, setStatus] = useState(null);
-    const [closed, setClosed] = useState(false);
 
     useEffect(() => {
         if (!userData) {
@@ -62,10 +61,12 @@ const Home = () => {
                 .then((response) => {
                     console.log('ADDING Song Response', response);
                     setStatus('success');
+                    setTimeout(() => setStatus(null), 3000);
                 })
                 .catch((err) => {
                     console.log('ERROR POST /v1/playlists/:id/tracks', err);
                     setStatus('fail');
+                    setTimeout(() => setStatus(null), 3000);
                 });
         } else {
             console.log('no access token');
@@ -75,8 +76,10 @@ const Home = () => {
     if (userData) {
         return (
             <div className='bg-white px-6 my-6'>
-                {status !== null && closed !== true ? (
-                    <Alert status={status} />
+                {status !== null ? (
+                    <Expire delay='3000' status={status}>
+                        <Alert status={status} />
+                    </Expire>
                 ) : null}
                 <h1 className='font-bold text-2xl capitalize'>
                     Add a song to your playlist
