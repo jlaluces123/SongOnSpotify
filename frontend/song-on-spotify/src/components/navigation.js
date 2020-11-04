@@ -13,7 +13,12 @@ const Navigation = ({ loggedIn }) => {
                     Sign Out
                 </a>
             ) : (
-                <span />
+                <a
+                    className='text-sm text-blue-500 font-normal hover:text-blue-600 transition duration-300 ease-in-out'
+                    href='http://localhost:3377/api/auth/login'
+                >
+                    Sign In
+                </a>
             )}
         </div>
     );
