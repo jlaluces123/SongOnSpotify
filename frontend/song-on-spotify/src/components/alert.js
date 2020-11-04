@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Alert = (props) => {
     const [status, setStatus] = useState(props.status);
+    const [show, setShow] = useState(props.show);
 
     if (status === 'success') {
         return <SuccessAlert />;

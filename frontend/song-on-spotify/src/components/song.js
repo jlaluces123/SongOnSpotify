@@ -5,40 +5,10 @@ import { useAccessToken } from '../hooks/useAccessToken';
 
 import Alert from './alert';
 
-const Song = ({ artists, name, images, uri }) => {
+const Song = ({ artists, name, images, uri, addSong }) => {
     const [accessToken, setAccessToken] = useAccessToken(
         window.location.search
     );
-
-    const addSong = async (e) => {
-        e.preventDefault();
-
-        let playlistId = localStorage.getItem('playlist_id');
-        console.log(playlistId, uri, accessToken);
-
-        if (accessToken) {
-            //  https:stackoverflow.com/questions/60811947/how-to-pass-authorization-token-in-header-to-react-axios-post
-            await axios
-                .post(
-                    `https:api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
-                    null,
-                    {
-                        headers: {
-                            Authorization: 'Bearer ' + accessToken,
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                )
-                .then((response) => {
-                    console.log('ADDING Song Response', response);
-                })
-                .catch((err) => {
-                    console.log('ERROR POST /v1/playlists/:id/tracks', err);
-                });
-        } else {
-            console.log('no access token');
-        }
-    };
 
     return (
         <div className='border-b-2 flex justify-between items-center py-4 transition hover:scale-y-1 hover:shadow-lg duration-250 ease-in transform'>
@@ -70,7 +40,7 @@ const Song = ({ artists, name, images, uri }) => {
                 stroke='currentColor'
                 viewBox='0 0 24 24'
                 xmlns='http://www.w3.org/2000/svg'
-                onClick={(e) => addSong(e)}
+                onClick={(e) => addSong(e, uri)}
             >
                 <path
                     strokeLinecap='round'
