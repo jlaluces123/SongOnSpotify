@@ -1,15 +1,6 @@
-import Axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useAccessToken } from '../hooks/useAccessToken';
-
-import Alert from './alert';
+import React from 'react';
 
 const Song = ({ artists, name, images, uri, addSong }) => {
-    const [accessToken, setAccessToken] = useAccessToken(
-        window.location.search
-    );
-
     return (
         <div className='border-b-2 flex justify-between items-center py-4 transition hover:scale-y-1 hover:shadow-lg duration-250 ease-in transform'>
             <div className='flex flex-row w-3/4'>

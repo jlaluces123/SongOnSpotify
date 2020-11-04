@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import queryString from 'query-string';
-import '../assets/search.css';
 
 import { useAccessToken } from '../hooks/useAccessToken';
 
 const Playlists = () => {
     // const [state, dispatch] = useReducer(reducer, initialPlaylist, init)
     const [playlists, setPlaylists] = useState(null);
-    const [playlistId, setPlaylistId] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedPlaylist, setSelectedPlaylist] = useState('');
     const [accessToken, setAccessToken] = useAccessToken(

@@ -21,10 +21,11 @@ const Alert = ({ status }) => {
     if (status === 'success') {
         return (
             <div
-                className='bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative'
+                className='mb-2  bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative'
                 role='alert'
             >
                 <strong className='font-bold'>Hooray!</strong>
+                <br />
                 <span className='block sm:inline'>
                     Song was successfully added to your playlist!
                 </span>
@@ -37,6 +38,7 @@ const Alert = ({ status }) => {
                 role='alert'
             >
                 <strong className='font-bold'>Uh oh!</strong>
+                <br />
                 <span className='block sm:inline'>
                     There was an error adding the song to your playlist!
                 </span>

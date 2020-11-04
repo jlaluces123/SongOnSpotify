@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { useAccessToken } from '../hooks/useAccessToken';
-import Playlists from './playlists';
 import Search from './search';
 import { Expire, Alert } from './alert';
 
