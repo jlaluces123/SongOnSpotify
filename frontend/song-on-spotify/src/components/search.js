@@ -18,7 +18,7 @@ const Search = ({ addSong }) => {
     }, [searchTerm]);
 
     const suggestSongs = () => {
-        // e.preventDefault();
+        if (searchTerm === '') return;
 
         axios
             .get('https://api.spotify.com/v1/search', {
