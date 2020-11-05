@@ -2,7 +2,7 @@ const axios = require('axios');
 const config = require('../config');
 const btoa = require('btoa');
 
-const uri = 'http://localhost:3377/api/auth/callback';
+const uri = 'https://song-on-spotify-backend.herokuapp.com/api/auth/callback';
 const encodedURI = encodeURIComponent(uri);
 
 module.exports = {
@@ -25,7 +25,8 @@ module.exports = {
         let body = {
             grant_type: 'authorization_code',
             code: req.query.code,
-            redirect_uri: 'http://localhost:3377/api/auth/callback',
+            redirect_uri:
+                'https://song-on-spotify-backend.herokuapp.com/api/auth/callback',
             client_id: config.spotifyClientID,
             client_secret: config.spotifyClientSecret,
         };

@@ -5,7 +5,7 @@ const axios = require('axios');
 const btoa = require('btoa');
 const router = express.Router();
 
-const uri = 'http://localhost:3377/api/auth/callback';
+const uri = 'https://song-on-spotify-backend.herokuapp.com/api/auth/callback';
 const encodedURI = encodeURIComponent(uri);
 
 const authMiddleware = require('../middleware/authMiddleware');
@@ -38,7 +38,8 @@ router.get('/callback', async (req, res, next) => {
         let body = {
             grant_type: 'authorization_code',
             code,
-            redirect_uri: 'http://localhost:3377/api/auth/callback',
+            redirect_uri:
+                'https://song-on-spotify-backend.herokuapp.com/api/auth/callback',
             client_id: config.spotifyClientID,
             client_secret: config.spotifyClientSecret,
         };
