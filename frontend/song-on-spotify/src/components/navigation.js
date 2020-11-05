@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Navigation = () => {
+const Navigation = ({ loggedIn }) => {
     return (
-        <div className='w-full h-16 px-6 flex justify-between items-center border-b-2 border-gray-300'>
+        <div className='w-full h-16 px-6 flex justify-between items-center'>
             <h1 className='font-semibold cursor-pointer'>Song On Spotify</h1>
-            <a
-                className='text-sm text-gray-600 font-normal hover:text-black transition duration-300 ease-in-out'
-                href='/'
-            >
-                Sign Out
-            </a>
+
+            {loggedIn === true ? (
+                <a
+                    className='text-sm text-gray-600 font-normal hover:text-black transition duration-300 ease-in-out'
+                    href='/'
+                >
+                    Sign Out
+                </a>
+            ) : (
+                <a
+                    className='text-xs border-2 px-5 py-1 rounded bg-green-400 text-white border-green-400'
+                    href='http://localhost:3377/api/auth/login'
+                >
+                    Login
+                </a>
+            )}
         </div>
     );
 };

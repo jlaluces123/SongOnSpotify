@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { useAccessToken } from '../hooks/useAccessToken';
-import Playlists from './playlists';
 import Search from './search';
 import { Expire, Alert } from './alert';
 
@@ -23,8 +22,6 @@ const Home = () => {
     }, []);
 
     const getUserData = async () => {
-        console.log('Getting user data...');
-
         // https://api.spotify.com/v1/me
         axios
             .get('https://api.spotify.com/v1/me', {
@@ -33,7 +30,6 @@ const Home = () => {
                 },
             })
             .then((response) => {
-                console.log(response.data);
                 setUserData(response.data);
             })
             .catch((err) => console.log('ERROR GET /v1/me', err));
@@ -59,7 +55,6 @@ const Home = () => {
                     }
                 )
                 .then((response) => {
-                    console.log('ADDING Song Response', response);
                     setStatus('success');
                     setTimeout(() => setStatus(null), 3000);
                 })
@@ -93,16 +88,19 @@ const Home = () => {
         );
     } else {
         return (
-            <div className='home'>
-                <h1>Welcome to Song On Spotify</h1>
+            <div className='flex flex-col h-full home items-center justify-center'>
+                <h1 className='font-bold my-2 text-2xl text-green-500'>
+                    Welcome to Song On Spotify
+                </h1>
 
                 <button
+                    className='border-2 border-green-400 hover:shadow-lg bg-green-400 duration-200 ease-in-out hover:bg-green-500 hover:border-green-500 hover:text-white px-16 py-2 rounded shadow text-white transition'
                     onClick={() =>
                         (window.location =
                             'http://localhost:3377/api/auth/login')
                     }
                 >
-                    Login
+                    Sign In
                 </button>
             </div>
         );

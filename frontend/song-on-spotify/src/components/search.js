@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import queryString from 'query-string';
 import Song from './song';
 
 import { useAccessToken } from '../hooks/useAccessToken';
@@ -13,8 +12,12 @@ const Search = ({ addSong }) => {
         window.location.search
     );
 
-    const suggestSongs = (e) => {
-        e.preventDefault();
+    useEffect(() => {
+        suggestSongs();
+    }, [searchTerm]);
+
+    const suggestSongs = () => {
+        if (searchTerm === '') return;
 
         axios
             .get('https://api.spotify.com/v1/search', {
@@ -27,7 +30,6 @@ const Search = ({ addSong }) => {
                 },
             })
             .then((response) => {
-                console.log(response.data.tracks.items);
                 setSuggestions(response.data.tracks.items);
             })
             .catch((err) => console.log('ERROR GET /v1/search', err));
@@ -50,7 +52,7 @@ const Search = ({ addSong }) => {
         <div>
             <form
                 className='flex flex-row mt-5'
-                onSubmit={(e) => suggestSongs(e)}
+                // onSubmit={(e) => suggestSongs(e)}
             >
                 <input
                     type='text'
