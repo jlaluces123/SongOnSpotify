@@ -62,7 +62,9 @@ router.get('/callback', async (req, res, next) => {
             .then((response) => {
                 let access_token = response.data.access_token;
                 res.redirect(
-                    'http://localhost:3000' + '?access_token=' + access_token
+                    'https://musing-euler-740911.netlify.app' +
+                        '?access_token=' +
+                        access_token
                 );
                 console.log('GET /callback DONE');
             })
