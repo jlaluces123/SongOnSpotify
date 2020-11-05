@@ -45,7 +45,7 @@ const Home = () => {
             //  https:stackoverflow.com/questions/60811947/how-to-pass-authorization-token-in-header-to-react-axios-post
             await axios
                 .post(
-                    `https:api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
+                    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${uri.toString()}`,
                     null,
                     {
                         headers: {
@@ -97,7 +97,7 @@ const Home = () => {
                     className='border-2 border-green-400 hover:shadow-lg bg-green-400 duration-200 ease-in-out hover:bg-green-500 hover:border-green-500 hover:text-white px-16 py-2 rounded shadow text-white transition'
                     onClick={() =>
                         (window.location =
-                            'http://localhost:3377/api/auth/login')
+                            'https://song-on-spotify-backend.herokuapp.com/api/auth/login')
                     }
                 >
                     Sign In

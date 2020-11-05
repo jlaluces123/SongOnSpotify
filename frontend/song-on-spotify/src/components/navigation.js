@@ -15,7 +15,7 @@ const Navigation = ({ loggedIn }) => {
             ) : (
                 <a
                     className='text-xs border-2 px-5 py-1 rounded bg-green-400 text-white border-green-400'
-                    href='http://localhost:3377/api/auth/login'
+                    href='https://song-on-spotify-backend.herokuapp.com/api/auth/login'
                 >
                     Login
                 </a>
