@@ -62,7 +62,7 @@ router.get('/callback', async (req, res, next) => {
             .then((response) => {
                 let access_token = response.data.access_token;
                 res.redirect(
-                    'https://musing-euler-740911.netlify.app' +
+                    'https://song-on-spotify.netlify.app' +
                         '?access_token=' +
                         access_token
                 );
