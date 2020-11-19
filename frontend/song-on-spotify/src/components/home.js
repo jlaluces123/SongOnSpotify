@@ -89,7 +89,7 @@ const Home = () => {
     } else {
         return (
             <div className='flex flex-col h-full home items-center justify-center'>
-                <h1 className='font-bold my-2 text-2xl text-green-500'>
+                <h1 className='font-bold my-2 text-2xl text-center text-green-500'>
                     Welcome to Song On Spotify
                 </h1>
 
