@@ -88,19 +88,19 @@ const Home = () => {
         );
     } else {
         return (
-            <div className='flex-grow px-6 flex flex-col h-full home items-baseline justify-center'>
-                <h1 className='text-4xl leading-snug font-bold'>
+            <div className='flex-grow px-6 flex flex-col h-full home items-baseline justify-center md:px-12'>
+                <h1 className='font-bold leading-snug md:text-5xl text-4xl'>
                     Song On <br />
                     Spotify
                 </h1>
                 {/* Line */}
-                <hr className='h-0 my-6 w-full bg-black' />
-                <p className='mb-2 text-sm leading-relaxed font-light'>
+                <hr className='bg-black h-0 md:bg-black md:w-1/4 my-6 w-full' />
+                <p className='font-light leading-relaxed mb-2 md:text-xl text-sm'>
                     Create playlists and add songs to <br /> them faster than
                     ever.
                 </p>
                 <button
-                    className='mt-2 px-10 py-2 bg-black rounded-full text-white'
+                    className='bg-black md:px-16 md:py-4 md:text-xl mt-2 px-10 py-2 rounded-full text-white'
                     onClick={() =>
                         (window.location =
                             'https://song-on-spotify-backend.herokuapp.com/api/auth/login')
