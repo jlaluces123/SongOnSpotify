@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navigation = ({ loggedIn }) => {
     return (
-        <div className='w-full h-16 px-6 flex justify-between items-center'>
+        <div className='flex h-16 items-center justify-between md:px-12 md:h-24 md:text-lg px-6 w-full'>
             <h1 className='font-semibold cursor-pointer'>Song On Spotify</h1>
 
             {loggedIn === true ? (
@@ -14,7 +14,7 @@ const Navigation = ({ loggedIn }) => {
                 </a>
             ) : (
                 <a
-                    className='text-xs border-2 px-5 py-1 rounded bg-green-400 text-white border-green-400'
+                    className='bg-green-400 border-2 border-green-400 md:px-8 md:text-md px-5 py-1 rounded text-white text-xs'
                     href='https://song-on-spotify-backend.herokuapp.com/api/auth/login'
                 >
                     Login
