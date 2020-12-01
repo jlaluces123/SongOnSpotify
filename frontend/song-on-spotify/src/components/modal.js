@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/custom.css';
 
-const Modal = () => {
+const Modal = (props) => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const [isPublic, setIsPublic] = useState(false);
@@ -18,20 +18,27 @@ const Modal = () => {
 
     const createPlaylist = (e) => {
         e.preventDefault();
-        fetch('https://api.spotify.com/v1/users/{user_id}/playlists', {
+        let requestBody = {
+            name,
+            public: isPublic,
+            collaborative,
+            description,
+        };
+        e.preventDefault();
+        fetch(`https://api.spotify.com/v1/users/${props.user_id}/playlists`, {
             method: 'POST',
-            body: {
-                name: name,
-                public: isPublic,
-                collaborative: collaborative,
-                description: description,
+            headers: {
+                Authorization: 'Bearer ' + props.token,
+                'Content-Type': 'application/json',
             },
+            body: JSON.stringify(requestBody),
         })
-            .then((response) => response.json())
-            .then((data) => console.log('Successfully Made Playlist: ', data))
-            .catch((err) =>
-                console.log('ERROR POST /v1/users/user_id/playlists', err)
-            );
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log('ERROR POST /v1/users/user_id/playlists', err);
+            });
     };
 
     if (open === true) {
@@ -79,7 +86,7 @@ const Modal = () => {
                                         type='text'
                                         name='name'
                                         id='name'
-                                        className='border border-transparent bg-gray-300 text-gray-600 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm rounded-md'
+                                        className='input-switch border border-transparent bg-gray-300 text-gray-600 focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm rounded-md'
                                         placeholder='Morning Drive'
                                     />
                                 </div>
@@ -103,6 +110,7 @@ const Modal = () => {
                                         className='switch'
                                     >
                                         <input
+                                            className='switch-input'
                                             type='checkbox'
                                             onClick={(e) =>
                                                 setCollaborative(!collaborative)
@@ -131,6 +139,7 @@ const Modal = () => {
                                         className='switch'
                                     >
                                         <input
+                                            className='switch-input'
                                             type='checkbox'
                                             onClick={(e) =>
                                                 setIsPublic(!isPublic)
@@ -151,7 +160,7 @@ const Modal = () => {
                                         placeholder='For my morning commute to work!'
                                         name='description'
                                         id='description'
-                                        className='resize rounded-md border border-transparent bg-gray-300 text-gray-600'
+                                        className='input-switch text-sm resize rounded-md border border-transparent bg-gray-300 text-gray-600'
                                         onChange={(e) =>
                                             setDescription(e.target.value)
                                         }
@@ -181,7 +190,13 @@ const Modal = () => {
             </div>
         );
     } else {
-        return <button onClick={(e) => setOpen(true)}>Open Modal</button>;
+        return (
+            <footer className='mb-auto'>
+                <button onClick={(e) => setOpen(true)}>
+                    Create a Playlist
+                </button>
+            </footer>
+        );
     }
 };
 

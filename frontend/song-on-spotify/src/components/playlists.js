@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { useAccessToken } from '../hooks/useAccessToken';
+import Modal from './modal';
 
 const Playlists = () => {
     // const [state, dispatch] = useReducer(reducer, initialPlaylist, init)
@@ -72,25 +73,27 @@ const Playlists = () => {
                             : 'hidden'
                     }
                 >
-                    {playlists.map((item) => (
-                        <button
-                            id={item.id}
-                            key={item.id}
-                            value={item.name}
-                            className='text-left flex items-center border-b px-4 py-4 hover:bg-green-400 hover:text-white rounded'
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setSelectedPlaylist(e.target.value);
-                                localStorage.setItem(
-                                    'playlist_id',
-                                    e.target.id
-                                );
-                                setIsOpen(false);
-                            }}
-                        >
-                            {item.name}
-                        </button>
-                    ))}
+                    {playlists.map((item) => {
+                        return (
+                            <button
+                                id={item.id}
+                                key={item.id}
+                                value={item.name}
+                                className='text-left flex items-center border-b px-4 py-4 hover:bg-green-400 hover:text-white rounded'
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setSelectedPlaylist(e.target.value);
+                                    localStorage.setItem(
+                                        'playlist_id',
+                                        e.target.id
+                                    );
+                                    setIsOpen(false);
+                                }}
+                            >
+                                {item.name}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
         );

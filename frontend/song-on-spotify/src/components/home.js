@@ -21,6 +21,10 @@ const Home = () => {
         }
     }, []);
 
+    useEffect(() => {
+        console.log('User Data: ', userData);
+    }, [userData]);
+
     const getUserData = async () => {
         // https://api.spotify.com/v1/me
         axios
@@ -83,6 +87,7 @@ const Home = () => {
                     Search a song name and select what playlist <br /> you would
                     like to add it to!
                 </span>
+
                 <Search addSong={addSong} />
             </div>
         );
