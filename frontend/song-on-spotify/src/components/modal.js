@@ -8,6 +8,8 @@ const Modal = (props) => {
     const [collaborative, setCollaborative] = useState(false);
     const [description, setDescription] = useState('');
 
+    const [status, setStatus] = useState(null);
+
     useEffect(() => {
         console.log('Public Changed: ', isPublic);
     }, [isPublic]);
@@ -35,6 +37,10 @@ const Modal = (props) => {
         })
             .then((response) => {
                 console.log(response);
+                setStatus('success');
+                setTimeout(() => {
+                    setOpen(false);
+                }, 2000);
             })
             .catch((err) => {
                 console.log('ERROR POST /v1/users/user_id/playlists', err);
@@ -173,9 +179,15 @@ const Modal = (props) => {
                             <button
                                 onClick={(e) => createPlaylist(e)}
                                 type='button'
-                                className='w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-black text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm'
+                                className={
+                                    status === 'success'
+                                        ? 'transition-all duration-300 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-400 text-base font-medium text-white focus:outline-none sm:ml-3 sm:w-auto sm:text-sm'
+                                        : 'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-black text-base font-medium text-white focus:outline-none sm:ml-3 sm:w-auto sm:text-sm'
+                                }
                             >
-                                Create Playlist
+                                {status === 'success'
+                                    ? 'Playlist Created!'
+                                    : 'Create Playlist'}
                             </button>
                             <button
                                 onClick={(e) => setOpen(false)}
