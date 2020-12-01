@@ -203,7 +203,10 @@ const Modal = (props) => {
         );
     } else {
         return (
-            <footer className='mb-auto'>
+            <footer
+                onClick={(e) => setOpen(true)}
+                className='bg-indigo-400 duration-300 cursor-pointer ease-in-out flex h-12 hover:bg-indigo-600 items-center justify-center mb-auto text-lg text-white transition-all'
+            >
                 <button onClick={(e) => setOpen(true)}>
                     Create a Playlist
                 </button>
