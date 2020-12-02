@@ -56,7 +56,7 @@ const Search = ({ addSong }) => {
             >
                 <input
                     type='text'
-                    className='w-1/2 border-b-2 border-gray-300 placeholder-gray-600 text-md text-black focus:outline-none '
+                    className='p-0 w-1/2 border-b-2 border-gray-300 placeholder-gray-600 text-md text-black focus:outline-none focus:shadow-none'
                     placeholder='Enter a song name'
                     autoComplete='off'
                     id='songName'
