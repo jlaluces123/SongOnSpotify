@@ -3,7 +3,7 @@ import Modal from './modal';
 
 const Navigation = ({ loggedIn }) => {
     return (
-        <div className='flex h-16 items-center justify-between md:px-12 md:h-24 md:text-lg px-6 w-full'>
+        <div className='flex h-16 items-center justify-between md:px-12 md:h-24 md:text-lg px-6 mt-4 w-full'>
             <h1 className='font-semibold cursor-pointer'>Song On Spotify</h1>
 
             {loggedIn === true ? (

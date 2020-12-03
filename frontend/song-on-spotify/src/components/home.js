@@ -74,7 +74,7 @@ const Home = () => {
 
     if (userData) {
         return (
-            <div className='bg-white px-6 my-6'>
+            <div className='w-full bg-white px-6 my-6'>
                 {status !== null ? (
                     <Expire delay='3000' status={status}>
                         <Alert status={status} />
