@@ -49,7 +49,7 @@ const App = () => {
         <div className='App flex flex-col h-screen'>
             <Navigation loggedIn={loggedIn} />
 
-            <main className='flex h-auto content flex-grow'>
+            <main className='flex flex-1 h-auto content flex-grow'>
                 <Switch>
                     <Route exact path='/' component={Home} />
                 </Switch>
