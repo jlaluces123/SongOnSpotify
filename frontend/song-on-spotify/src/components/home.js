@@ -3,10 +3,13 @@ import axios from 'axios';
 
 import { useAccessToken } from '../hooks/useAccessToken';
 import Search from './search';
+import Modal from './modal';
 import { Expire, Alert } from './alert';
 
 const Home = () => {
     const [userData, setUserData] = useState(null);
+    const [playlists, setPlaylists] = useState(null);
+
     const [accessToken, setAccessToken] = useAccessToken(
         window.location.search
     );
@@ -16,6 +19,7 @@ const Home = () => {
     useEffect(() => {
         if (!userData) {
             getUserData();
+            getPlaylists();
         } else {
             return;
         }
@@ -24,6 +28,20 @@ const Home = () => {
     useEffect(() => {
         console.log('User Data: ', userData);
     }, [userData]);
+
+    const getPlaylists = () => {
+        axios
+            .get('https://api.spotify.com/v1/me/playlists', {
+                headers: {
+                    Authorization: 'Bearer ' + accessToken,
+                },
+            })
+            .then((response) => {
+                console.log('GET v1/me/playlists COMPLETE');
+                setPlaylists(response.data.items);
+            })
+            .catch((err) => console.log('ERROR GET /v1/me/playlists', err));
+    };
 
     const getUserData = async () => {
         // https://api.spotify.com/v1/me
@@ -88,7 +106,14 @@ const Home = () => {
                     like to add it to!
                 </span>
 
-                <Search addSong={addSong} />
+                <Search playlists={playlists} addSong={addSong} />
+                {userData ? (
+                    <Modal
+                        user_id={userData.id}
+                        getPlaylists={getPlaylists}
+                        token={accessToken}
+                    />
+                ) : null}
             </div>
         );
     } else {

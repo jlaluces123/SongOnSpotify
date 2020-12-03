@@ -4,9 +4,7 @@ import axios from 'axios';
 import { useAccessToken } from '../hooks/useAccessToken';
 import Modal from './modal';
 
-const Playlists = () => {
-    // const [state, dispatch] = useReducer(reducer, initialPlaylist, init)
-    const [playlists, setPlaylists] = useState(null);
+const Playlists = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedPlaylist, setSelectedPlaylist] = useState('');
     const [accessToken, setAccessToken] = useAccessToken(
@@ -14,26 +12,10 @@ const Playlists = () => {
     );
 
     useEffect(() => {
-        if (!playlists) {
-            getPlaylists();
-        }
-    }, []);
+        console.log('Detected A change in playlists');
+    }, [props.playlists]);
 
-    const getPlaylists = () => {
-        axios
-            .get('https://api.spotify.com/v1/me/playlists', {
-                headers: {
-                    Authorization: 'Bearer ' + accessToken,
-                },
-            })
-            .then((response) => {
-                console.log('GET v1/me/playlists COMPLETE');
-                setPlaylists(response.data.items);
-            })
-            .catch((err) => console.log('ERROR GET /v1/me/playlists', err));
-    };
-
-    if (playlists) {
+    if (props.playlists) {
         return (
             <div className='w-1/2'>
                 <label
@@ -73,7 +55,7 @@ const Playlists = () => {
                             : 'hidden'
                     }
                 >
-                    {playlists.map((item) => {
+                    {props.playlists.map((item) => {
                         return (
                             <button
                                 id={item.id}

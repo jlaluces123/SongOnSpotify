@@ -48,14 +48,11 @@ const App = () => {
     return (
         <div className='App flex flex-col h-screen'>
             <Navigation loggedIn={loggedIn} />
-
             <main className='flex flex-1 h-auto content flex-grow'>
                 <Switch>
                     <Route exact path='/' component={Home} />
                 </Switch>
             </main>
-
-            {user ? <Modal user_id={user.id} token={accessToken} /> : null}
         </div>
     );
 };

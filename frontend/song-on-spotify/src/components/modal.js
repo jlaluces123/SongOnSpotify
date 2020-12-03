@@ -39,8 +39,10 @@ const Modal = (props) => {
                 console.log(response);
                 setStatus('success');
                 setTimeout(() => {
+                    setStatus(null);
                     setOpen(false);
                 }, 2000);
+                props.getPlaylists();
             })
             .catch((err) => {
                 console.log('ERROR POST /v1/users/user_id/playlists', err);
@@ -205,7 +207,7 @@ const Modal = (props) => {
         return (
             <footer
                 onClick={(e) => setOpen(true)}
-                className='bg-indigo-400 duration-300 cursor-pointer ease-in-out flex h-12 hover:bg-indigo-600 items-center justify-center mb-auto text-lg text-white transition-all'
+                className='bg-black rounded-md shadow duration-300 cursor-pointer ease-in-out flex h-12 hover:bg-indigo-600 items-center justify-center mb-auto text-lg text-white transition-all'
             >
                 <button onClick={(e) => setOpen(true)}>
                     Create a Playlist
