@@ -41,6 +41,7 @@ const Modal = (props) => {
                 setTimeout(() => {
                     setOpen(false);
                 }, 2000);
+                props.getPlaylists();
             })
             .catch((err) => {
                 console.log('ERROR POST /v1/users/user_id/playlists', err);

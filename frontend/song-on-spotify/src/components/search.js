@@ -5,7 +5,7 @@ import Song from './song';
 import { useAccessToken } from '../hooks/useAccessToken';
 import Playlists from './playlists';
 
-const Search = ({ addSong }) => {
+const Search = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [accessToken, setAccessToken] = useAccessToken(
@@ -63,7 +63,7 @@ const Search = ({ addSong }) => {
                     name='songName'
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <Playlists />
+                <Playlists playlists={props.playlists} />
             </form>
 
             <div className='max-h-md overflow-y-scroll my-6'>
@@ -71,7 +71,7 @@ const Search = ({ addSong }) => {
                     ? suggestions.map((song) => {
                           return (
                               <Song
-                                  addSong={addSong}
+                                  addSong={props.addSong}
                                   key={song.id}
                                   artists={parseArtists(song.artists)}
                                   name={song.name}
