@@ -4,6 +4,7 @@ import Song from './song';
 
 import { useAccessToken } from '../hooks/useAccessToken';
 import Playlists from './playlists';
+import Filter from './filter';
 
 const Search = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -11,6 +12,16 @@ const Search = (props) => {
     const [accessToken, setAccessToken] = useAccessToken(
         window.location.search
     );
+
+    const [filters, setFilters] = useState([]);
+    const searchTypes = [
+        'album',
+        'artist',
+        'playlist',
+        'track',
+        'show',
+        'episode',
+    ];
 
     useEffect(() => {
         suggestSongs();
@@ -64,6 +75,7 @@ const Search = (props) => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <Playlists playlists={props.playlists} />
+                <Filter searchFilters={searchTypes} />
             </form>
 
             <div className='max-h-md overflow-y-scroll my-6'>

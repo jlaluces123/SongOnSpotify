@@ -6,6 +6,7 @@ import Home from './components/home';
 import Modal from './components/modal';
 import Navigation from './components/navigation';
 import { useAccessToken } from './hooks/useAccessToken';
+import Filter from './components/filter';
 
 const App = () => {
     const [loggedIn, setIsLoggedIn] = useState(false);
@@ -51,6 +52,7 @@ const App = () => {
             <main className='flex flex-1 h-auto content flex-grow'>
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route path='/test' component={Filter} />
                 </Switch>
             </main>
         </div>
