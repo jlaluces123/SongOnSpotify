@@ -24,11 +24,38 @@ const Search = (props) => {
     ];
 
     useEffect(() => {
-        suggestSongs();
+        suggestSongs(null);
     }, [searchTerm]);
 
-    const suggestSongs = () => {
+    useEffect(() => {
+        // A filter was added
+        suggestSongs(filters);
+    }, [filters]);
+
+    const suggestSongs = (optionalArg) => {
+        let typeList = '';
         if (searchTerm === '') return;
+
+        if (optionalArg.length > 0) {
+            optionalArg.map((arg) => {
+                typeList += `${arg},`;
+            });
+
+            axios
+                .get('https://api.spotify.com/v1/search', {
+                    headers: {
+                        Authorization: 'Bearer ' + accessToken,
+                    },
+                    params: {
+                        q: searchTerm,
+                        type: typeList,
+                    },
+                })
+                .then((response) => {
+                    setSuggestions(response.data.tracks.items);
+                })
+                .catch((err) => console.log('ERROR GET /v1/search', err));
+        }
 
         axios
             .get('https://api.spotify.com/v1/search', {
@@ -84,6 +111,7 @@ const Search = (props) => {
                     <Playlists playlists={props.playlists} />
                 </div>
                 <Filter
+                    filters={filters}
                     handleFilterSelect={handleFilterSelect}
                     searchFilters={searchTypes}
                 />

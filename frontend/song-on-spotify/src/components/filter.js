@@ -56,7 +56,11 @@ const Filter = (props) => {
                                     key={type}
                                     value={type}
                                     onClick={(e) => props.handleFilterSelect(e)}
-                                    className='group leading-6 font-semibold capitalize flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200'
+                                    className={
+                                        props.filters.includes(type)
+                                            ? 'focus:outline-none text-indigo-600 bg-indigo-200 group leading-6 font-semibold capitalize flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200'
+                                            : 'focus:outline-none group leading-6 font-semibold capitalize flex items-center space-x-3 sm:space-x-4 hover:text-gray-600 transition-colors duration-200'
+                                    }
                                 >
                                     {type}
                                 </button>
