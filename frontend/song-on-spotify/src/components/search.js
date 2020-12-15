@@ -46,6 +46,12 @@ const Search = (props) => {
             .catch((err) => console.log('ERROR GET /v1/search', err));
     };
 
+    const handleFilterSelect = async (e) => {
+        e.preventDefault();
+        console.log('e.target.value: ', e.target.value);
+        setFilters([...filters, e.target.value]);
+    };
+
     const parseArtists = (arr) => {
         let length = arr.length;
 
@@ -62,23 +68,28 @@ const Search = (props) => {
     return (
         <div>
             <form
-                className='flex flex-row mt-5'
+                className='flex flex-col mt-5'
                 // onSubmit={(e) => suggestSongs(e)}
             >
-                <input
-                    type='text'
-                    className='p-0 w-1/2 border-b-2 border-gray-300 placeholder-gray-600 text-md text-black focus:outline-none focus:shadow-none'
-                    placeholder='Enter a song name'
-                    autoComplete='off'
-                    id='songName'
-                    name='songName'
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                <div className='flex flex-row w-full'>
+                    <input
+                        type='text'
+                        className='p-0 w-1/2 border-b-2 border-gray-300 placeholder-gray-600 text-md text-black focus:outline-none focus:shadow-none'
+                        placeholder='Enter a song name'
+                        autoComplete='off'
+                        id='songName'
+                        name='songName'
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <Playlists playlists={props.playlists} />
+                </div>
+                <Filter
+                    handleFilterSelect={handleFilterSelect}
+                    searchFilters={searchTypes}
                 />
-                <Playlists playlists={props.playlists} />
-                <Filter searchFilters={searchTypes} />
             </form>
 
-            <div className='max-h-md overflow-y-scroll my-6'>
+            <div className='max-h-md overflow-y-scroll my-2'>
                 {suggestions.length > 0
                     ? suggestions.map((song) => {
                           return (
