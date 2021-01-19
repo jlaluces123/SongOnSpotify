@@ -49,7 +49,7 @@ const App = () => {
     return (
         <div className='App flex flex-col h-screen'>
             <Navigation loggedIn={loggedIn} />
-            <main className='flex flex-1 h-auto content flex-grow lg:mx-16'>
+            <main className='flex flex-1 h-auto content flex-grow md:mx-16 lg:mx-48'>
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route path='/test' component={Filter} />

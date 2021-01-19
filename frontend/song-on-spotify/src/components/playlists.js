@@ -17,7 +17,7 @@ const Playlists = (props) => {
 
     if (props.playlists) {
         return (
-            <div className='w-1/2'>
+            <div className='relative w-1/2'>
                 <label
                     htmlFor='menu-toggle'
                     className='text-sm rounded-lg block cursor-pointer bg-gray-300 text-gray-800'
@@ -51,7 +51,7 @@ const Playlists = (props) => {
                 <div
                     className={
                         isOpen
-                            ? 'flex z-10 border-2 border-gray-500 max-h-menu overflow-y-scroll mt-4 max-w-xs text-left right-sm text-sm shadow-lg rounded flex-col absolute bg-white'
+                            ? 'flex z-10 border-2 border-gray-500 max-h-menu overflow-y-scroll mt-4 lg:w-full w-xs text-left right-auto text-sm shadow-lg rounded flex-col absolute bg-white'
                             : 'hidden'
                     }
                 >
