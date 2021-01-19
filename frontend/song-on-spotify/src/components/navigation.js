@@ -14,12 +14,28 @@ const Navigation = ({ loggedIn }) => {
                     Sign Out
                 </a>
             ) : (
-                <a
-                    className='bg-green-400 border-2 border-green-400 md:px-8 md:text-md px-5 py-1 rounded text-white text-xs'
-                    href='https://song-on-spotify-backend.herokuapp.com/api/auth/login'
-                >
-                    Login
-                </a>
+                <div className='align-middle bg-black flex flex-row items-center justify-between p-1 rounded'>
+                    <a
+                        className='md:px-8 md:text-md px-5 py-1 rounded text-white text-sm'
+                        href='https://song-on-spotify-backend.herokuapp.com/api/auth/login'
+                    >
+                        Get Started
+                    </a>
+                    <svg
+                        class='w-8 h-6 text-white'
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                        xmlns='http://www.w3.org/2000/svg'
+                    >
+                        <path
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                            stroke-width='2'
+                            d='M17 8l4 4m0 0l-4 4m4-4H3'
+                        ></path>
+                    </svg>
+                </div>
             )}
         </div>
     );
