@@ -6,6 +6,7 @@ import Home from './components/home';
 import Modal from './components/modal';
 import Navigation from './components/navigation';
 import { useAccessToken } from './hooks/useAccessToken';
+import Filter from './components/filter';
 
 const App = () => {
     const [loggedIn, setIsLoggedIn] = useState(false);
@@ -48,9 +49,10 @@ const App = () => {
     return (
         <div className='App flex flex-col h-screen'>
             <Navigation loggedIn={loggedIn} />
-            <main className='flex flex-1 h-auto content flex-grow'>
+            <main className='flex flex-1 h-auto content flex-grow md:mx-16 lg:mx-48'>
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route path='/test' component={Filter} />
                 </Switch>
             </main>
         </div>

@@ -3,7 +3,7 @@ import Modal from './modal';
 
 const Navigation = ({ loggedIn }) => {
     return (
-        <div className='flex h-16 items-center justify-between md:px-12 md:h-24 md:text-lg px-6 mt-4 w-full'>
+        <div className='flex h-16 min-h-24 items-center justify-between md:px-12 md:h-24 md:text-lg px-6 mt-4 w-full'>
             <h1 className='font-semibold cursor-pointer'>Song On Spotify</h1>
 
             {loggedIn === true ? (
@@ -14,12 +14,28 @@ const Navigation = ({ loggedIn }) => {
                     Sign Out
                 </a>
             ) : (
-                <a
-                    className='bg-green-400 border-2 border-green-400 md:px-8 md:text-md px-5 py-1 rounded text-white text-xs'
-                    href='https://song-on-spotify-backend.herokuapp.com/api/auth/login'
-                >
-                    Login
-                </a>
+                <div className='align-middle bg-black flex flex-row items-center justify-between p-1 rounded'>
+                    <a
+                        className='md:px-8 md:text-md px-5 py-1 rounded text-white text-sm'
+                        href='https://song-on-spotify-backend.herokuapp.com/api/auth/login'
+                    >
+                        Get Started
+                    </a>
+                    <svg
+                        className='w-8 h-6 text-white'
+                        fill='none'
+                        stroke='currentColor'
+                        viewBox='0 0 24 24'
+                        xmlns='http://www.w3.org/2000/svg'
+                    >
+                        <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            strokeWidth='2'
+                            d='M17 8l4 4m0 0l-4 4m4-4H3'
+                        ></path>
+                    </svg>
+                </div>
             )}
         </div>
     );
