@@ -393,6 +393,7 @@ module.exports = {
             0: '0',
             full: '100%',
             screen: '100vh',
+            24: '6rem',
         },
         minWidth: {
             0: '0',
