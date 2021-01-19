@@ -117,22 +117,26 @@ const Search = (props) => {
                 /> */}
             </form>
 
-            <div className='md:max-h-full max-h-md overflow-y-scroll my-2 transition-all ease-in-out duration-250'>
-                {suggestions.length > 0
-                    ? suggestions.map((song) => {
-                          return (
-                              <Song
-                                  addSong={props.addSong}
-                                  key={song.id}
-                                  artists={parseArtists(song.artists)}
-                                  name={song.name}
-                                  images={song.album.images}
-                                  uri={song.uri}
-                              />
-                          );
-                      })
-                    : null}
-            </div>
+            {searchTerm !== '' ? (
+                <div className='md:max-h-full max-h-md overflow-y-scroll my-2 transition-all ease-in-out duration-250'>
+                    {suggestions.length > 0
+                        ? suggestions.map((song) => {
+                              return (
+                                  <Song
+                                      addSong={props.addSong}
+                                      key={song.id}
+                                      artists={parseArtists(song.artists)}
+                                      name={song.name}
+                                      images={song.album.images}
+                                      uri={song.uri}
+                                  />
+                              );
+                          })
+                        : null}
+                </div>
+            ) : (
+                <div className='md:max-h-full max-h-md overflow-y-scroll my-2 transition-all ease-in-out duration-250' />
+            )}
         </div>
     );
 };
