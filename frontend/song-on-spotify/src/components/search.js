@@ -27,35 +27,35 @@ const Search = (props) => {
         suggestSongs(null);
     }, [searchTerm]);
 
-    useEffect(() => {
-        // A filter was added
-        suggestSongs(filters);
-    }, [filters]);
+    // useEffect(() => {
+    //     // A filter was added
+    //     suggestSongs(filters);
+    // }, [filters]);
 
     const suggestSongs = (optionalArg) => {
         let typeList = '';
         if (searchTerm === '') return;
 
-        if (optionalArg.length > 0) {
-            optionalArg.map((arg) => {
-                typeList += `${arg},`;
-            });
+        // if (optionalArg.length > 0) {
+        //     optionalArg.map((arg) => {
+        //         typeList += `${arg},`;
+        //     });
 
-            axios
-                .get('https://api.spotify.com/v1/search', {
-                    headers: {
-                        Authorization: 'Bearer ' + accessToken,
-                    },
-                    params: {
-                        q: searchTerm,
-                        type: typeList,
-                    },
-                })
-                .then((response) => {
-                    setSuggestions(response.data.tracks.items);
-                })
-                .catch((err) => console.log('ERROR GET /v1/search', err));
-        }
+        //     axios
+        //         .get('https://api.spotify.com/v1/search', {
+        //             headers: {
+        //                 Authorization: 'Bearer ' + accessToken,
+        //             },
+        //             params: {
+        //                 q: searchTerm,
+        //                 type: typeList,
+        //             },
+        //         })
+        //         .then((response) => {
+        //             setSuggestions(response.data.tracks.items);
+        //         })
+        //         .catch((err) => console.log('ERROR GET /v1/search', err));
+        // }
 
         axios
             .get('https://api.spotify.com/v1/search', {
@@ -110,14 +110,14 @@ const Search = (props) => {
                     />
                     <Playlists playlists={props.playlists} />
                 </div>
-                <Filter
+                {/* <Filter
                     filters={filters}
                     handleFilterSelect={handleFilterSelect}
                     searchFilters={searchTypes}
-                />
+                /> */}
             </form>
 
-            <div className='max-h-md overflow-y-scroll my-2'>
+            <div className='md:max-h-full max-h-md overflow-y-scroll my-2 transition-all ease-in-out duration-250'>
                 {suggestions.length > 0
                     ? suggestions.map((song) => {
                           return (
